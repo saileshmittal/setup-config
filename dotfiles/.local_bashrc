@@ -30,3 +30,5 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
   ssh-add
 fi
+# Kill on logout
+trap 'test -n "$SSH_AUTH_SOCK" && eval `ssh-agent -k`' 0
